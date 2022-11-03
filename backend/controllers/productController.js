@@ -148,7 +148,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   console.log(product1._id)
   
   // const order = await myfutureOrder.findById(req.params.id); 
-  const order = await myfutureOrder.findOne({ "product": req.params.id });
+  const order = await myfutureOrder.findOne({ "orderItems.product": req.params.id });
   console.log(order._id)
 
   // const user = User.findOne(req.params.id.user);  _id  
@@ -198,7 +198,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
    
   // Code to check Price 
 
-  if (order.orderItems[0].newprice >= product1.price) {
+  if (order.orderItems.newprice >= product1.price) {
     // order.deliveredAt = Date.now();
     // order.newprice = req.body.price
     console.log("I am inside if block.")

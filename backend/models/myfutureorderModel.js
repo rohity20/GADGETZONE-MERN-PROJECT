@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const myfutureorderSchema = new mongoose.Schema({
 
-  orderItems: [
-    {
+  // orderItems:
+  //   {
       name: {
         type: String,
         required: true,
@@ -22,8 +22,8 @@ const myfutureorderSchema = new mongoose.Schema({
         ref: "Product",
         required: true,
       },
-    },
-  ],
+  // },
+  
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",

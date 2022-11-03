@@ -5,18 +5,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../layout/MetaData";
 // import { clearErrors, createProduct } from "../../actions/productAction";
-// import { clearErrors, createOrder } from "../../actions/futureorderAction";
+import { clearErrors, createOrder } from "../../actions/futureorderAction";
 
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 // import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
 // import CheckoutSteps from "../Cart/CheckoutSteps";
-// import {
-//     CREATE_ORDER_REQUEST,
-//     CREATE_ORDER_SUCCESS,
-//     CREATE_ORDER_FAIL,
-//     CLEAR_ERRORS,
-//   } from "../../constants/futureorderConstants";
+import {
+    CREATE_ORDER_REQUEST,
+    CREATE_ORDER_SUCCESS,
+    CREATE_ORDER_FAIL,
+    CLEAR_ERRORS,
+  } from "../../constants/futureorderConstants";
 
 const PriceTracker = ({ history }) => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const PriceTracker = ({ history }) => {
 //   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 // const { pricingInfo } = useSelector((state) => state.cart);
 //   const { loading, error, success } = useSelector((state) => state.newProduct);
-// const { loading, error, success } = useSelector((state) => state.newOrderReducer);
+const { loading, error, success } = useSelector((state) => state.newOrder);
 
 const [id, setId] = useState("");
 const [name, setName] = useState("");
@@ -40,51 +40,52 @@ const [newprice, setNewprice] = useState("");
 // const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
 // const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 
-  const shippingSubmit = (e) => {
-    e.preventDefault();
-
-    // if (phoneNo.length < 10 || phoneNo.length > 10) {
-    //   alert.error("Phone Number should be 10 digits Long");
-    //   return;
-    // }
-    // dispatch(
-    //   saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
-    // );
-    dispatch(
-        saveShippingInfo({ id, name, price, newprice })
-      );
-    history.push("/myFuture/order/confirm");
-  };
-  
-//     useEffect(() => {
-//     if (error) {
-//       alert.error(error);
-//       dispatch(clearErrors());
-//     }
-
-//     if (success) {
-//       alert.success("Product Created Successfully");
-//       history.push("/myFuture/order/confirm");
-//       dispatch({ type: CREATE_ORDER_SUCCESS });
-//     }
-//   }, [dispatch, alert, error, history, success]);
-
-//   const createProductSubmitHandler = (e) => {
+//   const shippingSubmit = (e) => {
 //     e.preventDefault();
 
-//     const myForm = new FormData();
-
-//     myForm.set("id", id);
-//     myForm.set("name", name);
-//     myForm.set("price", price);
-//     myForm.set("newprice", newprice);
-//     // myForm.set("Stock", Stock);
-
-//     // images.forEach((image) => {
-//     //   myForm.append("images", image);
-//     // });
-//     dispatch(createOrder(myForm));
+//     // if (phoneNo.length < 10 || phoneNo.length > 10) {
+//     //   alert.error("Phone Number should be 10 digits Long");
+//     //   return;
+//     // }
+//     // dispatch(
+//     //   saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
+//     // );
+//     dispatch(
+//         // saveShippingInfo({ id, name, price, newprice })
+//         createOrder({ id, name, price, newprice })
+//       );
+//     history.push("/myFuture/order/confirm");
 //   };
+  
+    useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      alert.success("Order Created Successfully");
+      history.push("/myFuture/order/confirm");
+      dispatch({ type: CREATE_ORDER_SUCCESS });
+    }
+  }, [dispatch, alert, error, history, success]);
+
+  const createProductSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const myForm = new FormData();
+
+    myForm.set("id", id);
+    myForm.set("name", name);
+    myForm.set("price", price);
+    myForm.set("newprice", newprice);
+    // myForm.set("Stock", Stock);
+
+    // images.forEach((image) => {
+    //   myForm.append("images", image);
+    // });
+    dispatch(createOrder(myForm));
+  };
 
 //   const createProductImagesChange = (e) => {
 //     const files = Array.from(e.target.files);
@@ -119,7 +120,7 @@ const [newprice, setNewprice] = useState("");
           <form
             className="shippingForm"
             encType="multipart/form-data"
-            onSubmit={shippingSubmit}
+            onSubmit={createProductSubmitHandler}
           >
             <div>
               <input

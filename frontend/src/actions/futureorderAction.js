@@ -32,6 +32,7 @@ import {
           "Content-Type": "application/json",
         },
       };
+      console.log(config)
       const { data } = await axios.post("/api/v1/myFuture/order/new", order, config);
   
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
