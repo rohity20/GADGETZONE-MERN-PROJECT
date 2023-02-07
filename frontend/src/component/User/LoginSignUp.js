@@ -137,6 +137,9 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
                 <Link to="/password/forgot">Forget Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
+
+                <input type="submit" value="Login With Gooogle" className="loginBtn" />
+
               </form>
               <form
                 className="signUpForm"

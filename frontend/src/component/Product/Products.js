@@ -14,10 +14,10 @@ const categories = [
   "Laptop",
   "Smartphones",
   "Camera",
-  // "Tops",
-  // "Attire",
-  // "Camera",
-  // "Footware",
+  "Tops",
+  "Attire",
+  "Camera",
+  "Footware",
 ];
 
 const Products = ({ match }) => {

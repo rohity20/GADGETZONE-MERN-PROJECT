@@ -24,7 +24,7 @@ import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";
 import axios from "axios";
-import Payment from "./component/Cart/Payment";
+// import Payment from "./component/Cart/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess";
@@ -42,19 +42,19 @@ import ProductReviews from "./component/Admin/ProductReviews";
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
-import PriceTracker from "./component/Product/PriceTracker";
-import PriceSuccess from "./component/Product/PriceSuccess";
+// import PriceTracker from "./component/Product/PriceTracker";
+// import PriceSuccess from "./component/Product/PriceSuccess";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  // const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("/api/v1/stripeapikey");
 
-    setStripeApiKey(data.stripeApiKey);
-  }
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
 
   useEffect(() => {
     WebFont.load({
@@ -63,9 +63,9 @@ function App() {
       },
     });
 
-    store.dispatch(loadUser());
+    // store.dispatch(loadUser());
 
-    getStripeApiKey();
+    // getStripeApiKey();
   }, []);
 
   window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -76,11 +76,11 @@ function App() {
 
       {isAuthenticated && <UserOptions user={user} />}
 
-      {stripeApiKey && (
+      {/* {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <ProtectedRoute exact path="/process/payment" component={Payment} />
         </Elements>
-      )}
+      )} */}
 
       <Switch>
         <Route exact path="/" component={Home} />
@@ -94,8 +94,8 @@ function App() {
 
         <Route exact path="/about" component={About} />
 
-        <Route exact path="/myFuture/order/new" component={PriceTracker} />
-        <Route exact path="/myFuture/order/confirm" component={PriceSuccess} />
+        {/* <Route exact path="/myFuture/order/new" component={PriceTracker} />
+        <Route exact path="/myFuture/order/confirm" component={PriceSuccess} /> */}
 
         <ProtectedRoute exact path="/account" component={Profile} />
 

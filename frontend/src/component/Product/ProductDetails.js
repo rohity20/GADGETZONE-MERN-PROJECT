@@ -21,7 +21,7 @@ import {
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
-import PriceTracker from "./PriceTracker";
+// import PriceTracker from "./PriceTracker";
 
 const ProductDetails = ({ match, history}) => {
   const dispatch = useDispatch();
@@ -100,12 +100,12 @@ const ProductDetails = ({ match, history}) => {
     dispatch(getProductDetails(match.params.id));
   }, [dispatch, match.params.id, error, alert, reviewError, success]);
 
-  const checkoutHandler = () => {
-    history.push("/myFuture/order/new");
+  // const checkoutHandler = () => {
+  //   history.push("/myFuture/order/new");
     // return <div>
     //      <PriceTracker />
     // </div>
-  };
+  // };
 
   return (
     <Fragment>
@@ -156,7 +156,7 @@ const ProductDetails = ({ match, history}) => {
                     Add to Cart
                   </button>
 
-                  <button onClick={checkoutHandler}>Price_Tracker</button>
+                  {/* <button onClick={checkoutHandler}>Price_Tracker</button> */}
                 </div>
 
                 <p>

@@ -7,6 +7,7 @@ import {MdAddShoppingCart } from "react-icons/md";
 
 const Header = () => {
   return <ReactNavbar 
+  burgerColor = "black"
   burgerColorHover= "#eb4034"
   logo={true}
   logoWidth= "20vmax"
